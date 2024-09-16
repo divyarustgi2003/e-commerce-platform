@@ -8,6 +8,13 @@
       "when": 1725977659186,
       "tag": "0000_friendly_northstar",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1726296378123,
+      "tag": "0001_broad_jackal",
+      "breakpoints": true
     }
   ]
 }
