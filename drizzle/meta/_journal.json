@@ -15,6 +15,20 @@
       "when": 1726296378123,
       "tag": "0001_broad_jackal",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1726561747635,
+      "tag": "0002_reflective_black_queen",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1726562161921,
+      "tag": "0003_graceful_fat_cobra",
+      "breakpoints": true
     }
   ]
 }

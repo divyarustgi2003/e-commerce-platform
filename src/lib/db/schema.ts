@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { pgTable,serial,varchar,text, timestamp, integer } from "drizzle-orm/pg-core";
+import { pgTable,serial,varchar,text, timestamp, integer, index } from "drizzle-orm/pg-core";
 
 export const users = pgTable("users",
     {
@@ -26,4 +26,16 @@ export const products = pgTable("products", {
     updated_at: timestamp("updated_at").default(sql`CURRENT_TIMESTAMP`),
     created_at: timestamp("created_at").default(sql`CURRENT_TIMESTAMP`),
 
+})
+
+export const warehouses = pgTable("warehouses",{
+    id:serial("id").primaryKey(),
+    name:varchar("name" ,{length:100}).notNull(),
+    pincode: varchar('pincode', {length: 6}).notNull(), //to make search faster
+    updated_at: timestamp("updated_at").default(sql`CURRENT_TIMESTAMP`),
+    created_at: timestamp("created_at").default(sql`CURRENT_TIMESTAMP`),
+},(table) => {
+    return {
+        pincodeIdx: index("pincode_idx").on(table.pincode)
+    }
 })
