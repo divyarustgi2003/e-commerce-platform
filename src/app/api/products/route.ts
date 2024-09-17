@@ -1,6 +1,7 @@
 import { db } from "@/lib/db/db";
 import { products } from "@/lib/db/schema";
 import { productSchema } from "@/lib/validators/productSchema";
+import { desc } from "drizzle-orm";
 import { writeFile } from "node:fs/promises";
 import path from "node:path";
 
@@ -34,4 +35,14 @@ export async function POST(request: Request){
     }
 
     return Response.json({message: "Product created successfully"}, {status: 201});
+}
+
+export async function GET(){
+   try{
+     const allproducts = await db.select().from(products).orderBy(desc(products.id));
+     return Response.json(allproducts);
+   }catch(err){
+    return Response.json({message: 'Failed to get all the products'}, {status: 500});
+   }
+
 }
