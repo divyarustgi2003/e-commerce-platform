@@ -85,6 +85,13 @@
       "when": 1726662620845,
       "tag": "0011_left_master_chief",
       "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1726664077044,
+      "tag": "0012_panoramic_king_cobra",
+      "breakpoints": true
     }
   ]
 }
