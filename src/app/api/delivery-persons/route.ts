@@ -33,7 +33,7 @@ export async function GET(){
         ).from(deliveryPersons).leftJoin(warehouses,eq(deliveryPersons.warehouseId,warehouses.id)).orderBy(desc(deliveryPersons.id));
         return Response.json(allDeliveryPersons);
     }catch(err){
-        return Response.json({message: "Failed to fetchdelivery persons"}, {status:500});
+        return Response.json({message: "Failed to fetch delivery persons"}, {status:500});
     }
  
 }
