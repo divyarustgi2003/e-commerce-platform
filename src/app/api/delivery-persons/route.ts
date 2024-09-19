@@ -10,13 +10,13 @@ export async function POST(request: Request){
      validatedData = await deliveryPersonSchema.parse(requestData);
  }catch(err){   
         return Response.json({message: err}, {status:400});
-    }
- try{ 
-     await db.insert(deliveryPersons).values(validatedData);
-     return Response.json({message: "Delivery person created successfully"}, {status:201});
+}
+try{ 
+    await db.insert(deliveryPersons).values(validatedData);
+    return Response.json({message: "Delivery person created successfully"}, {status:201});
  }catch(err){
     return Response.json({message: err}, {status:500});
- }
+}
 }
 
 export async function GET(){
@@ -28,9 +28,7 @@ export async function GET(){
             warehouseId: deliveryPersons.warehouseId,
             warehouseName: warehouses.name,
             orderId: deliveryPersons.orderId,
-        }
-
-        ).from(deliveryPersons).leftJoin(warehouses,eq(deliveryPersons.warehouseId,warehouses.id)).orderBy(desc(deliveryPersons.id));
+        }).from(deliveryPersons).leftJoin(warehouses,eq(deliveryPersons.warehouseId,warehouses.id)).orderBy(desc(deliveryPersons.id));
         return Response.json(allDeliveryPersons);
     }catch(err){
         return Response.json({message: "Failed to fetch delivery persons"}, {status:500});
