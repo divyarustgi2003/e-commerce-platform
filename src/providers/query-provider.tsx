@@ -1,4 +1,5 @@
 'use client';
+//client component is rendered once on server and then on client
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 let browserQueryClient: QueryClient | undefined = undefined;
@@ -7,9 +8,11 @@ function makeQueryClient() {
     return new QueryClient();
 }
 
+//singleton pattern 
+
 function getQueryClient() {
     // we are on server
-    if (typeof window === 'undefined') {
+    if (typeof window === 'undefined') { 
         return makeQueryClient();
     } else {
         // on client
