@@ -3,15 +3,22 @@ import { Form, FormProvider, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod';
 import { productSchema } from '@/lib/validators/productSchema';
 import { z } from 'zod';
-import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Loader2 } from 'lucide-react';
 
 export type FormValues = z.infer<typeof productSchema>
 
 
-const CreateProductForm = ({onSubmit}: {onSubmit: (formValues: FormValues)=>void}) => {
+const CreateProductForm = ({
+  onSubmit,
+  disabled,
+}: {
+  onSubmit: (formValues: FormValues)=>void;
+   disabled: boolean;
+  }) => {
     const form = useForm<z.infer<typeof productSchema>>({
         resolver: zodResolver(productSchema),
         defaultValues:{
@@ -91,7 +98,9 @@ const CreateProductForm = ({onSubmit}: {onSubmit: (formValues: FormValues)=>void
               </FormItem>
             )}
           />
-          <Button className='w-full'>Submit</Button>
+          <Button className='w-full' disabled={disabled}>
+            { disabled ? <Loader2 className='ize-4 animate-spin'/> : 'Submit'}
+        </Button>
         </form>
       </Form>
       </FormProvider>
