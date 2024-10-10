@@ -5,8 +5,11 @@ import CreateProductForm, { FormValues } from './create-product-form'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { createProduct } from '@/http/api'
 import { useNewPoduct } from '@/store/product/product-store'
+import { Toast } from '@/components/ui/toast'
+import { useToast } from '@/hooks/use-toast'
 
 const ProductSheet = () => {
+  const { toast } = useToast();
     const {isOpen, onClose} = useNewPoduct()
     const queryClient = useQueryClient();
 
@@ -15,7 +18,9 @@ const ProductSheet = () => {
         mutationFn: (data: FormData) => createProduct(data),
         onSuccess: () => {
           queryClient.invalidateQueries({ queryKey: ['products']});
-          alert('Product created successfully');
+          toast({
+            title: "Product created successfully",
+          })
           onClose();
         }
 

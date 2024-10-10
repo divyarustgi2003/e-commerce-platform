@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { QueryProvider } from "@/providers/query-provider";
+import { Toaster } from "@/components/ui/toaster";
 
 
 
@@ -32,6 +33,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
       <QueryProvider> {children} </QueryProvider>
+      <Toaster/>
       </body>
     </html>
   );
