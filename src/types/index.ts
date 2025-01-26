@@ -27,6 +27,7 @@ export interface Inventory {
 }
 
 export interface InventoryData {
+  
     sku: string;
     warehouseId: number;
     productId: number;
