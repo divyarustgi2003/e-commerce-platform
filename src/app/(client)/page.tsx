@@ -6,6 +6,8 @@ import About from './_components/about';
 import NewsLetter from './_components/newsletter';
 import Footer from './_components/footer';
 import Header from './_components/header';
+import ProductSheet from '../admin/products/product-sheet';
+import Products from './_components/products';
 // import Products from './_components/products';
 
 
@@ -16,7 +18,7 @@ const HomePage = () => {
             <Hero />
             <SpecialProducts />
             <About />
-         
+            <Products />
             <NewsLetter />
             <Footer />
         </>
